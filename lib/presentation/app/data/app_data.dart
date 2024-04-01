@@ -1,3 +1,5 @@
+import 'package:github_api/presentation/screen/search/search_screen.dart';
+
 import '../../navigation/base_page.dart';
 import '../../screen/splash/splash_screen.dart';
 

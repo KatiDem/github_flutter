@@ -19,7 +19,7 @@ abstract class Bloc<T extends BaseArguments, D> {
 
 abstract class BlocImpl<T extends BaseArguments, D> implements Bloc<T, D> {
   final _data = StreamController<BlocData<D?>>();
-  final _blocData = BlocData.init();
+  final _blocData = BlocData<D?>.init();
 
   @protected
   final appNavigator = GetIt.I.get<AppNavigator>();

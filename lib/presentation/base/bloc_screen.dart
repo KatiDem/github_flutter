@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import '../navigation/base_arguments.dart';
 import 'bloc.dart';
 
 abstract class BlocScreenState<SW extends StatefulWidget, B extends Bloc> extends State<SW>
     with WidgetsBindingObserver {
-  BlocScreenState(this.bloc);
-
   @protected
-  final B bloc;
+  final B bloc = GetIt.I.get<B>();
 
   @override
   void initState() {
     super.initState();
     bloc.initState();
-    bloc.dispose();
     _getArgs();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    bloc.dispose();
   }
 
   void _getArgs() {
