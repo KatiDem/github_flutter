@@ -45,6 +45,7 @@ class _SearchBloc extends BlocImpl<SearchScreenArguments, SearchData> implements
     this._deleteFavoriteUseCase,
   );
 
+  // todo add search result from loacal storage
   @override
   void initState() {
     super.initState();
@@ -62,9 +63,11 @@ class _SearchBloc extends BlocImpl<SearchScreenArguments, SearchData> implements
   void goToFavorites() {
     appNavigator.push(
       FavoritesScreen.page(
-        FavoritesScreenArguments(), //todo pass List with repos
+        FavoritesScreenArguments(),
       ),
     );
+    _screenData.reposList = [];
+    _updateData();
   }
 
   @override
@@ -74,9 +77,12 @@ class _SearchBloc extends BlocImpl<SearchScreenArguments, SearchData> implements
     _updateData();
   }
 
+  // todo add loading while usecase executes
+  // todo add logic for checking favorites from cache
+  // todo save search to local storage
   @override
   void onSearch(String input) async {
-    final List<Repo>? repos = await _getReposUseCase.call(input);
+    final List<Repo>? repos = await _getReposUseCase.call(input.trim());
     _screenData.isEmptyRepos = repos == null;
     _screenData.reposList = repos ?? [];
     _updateData();
