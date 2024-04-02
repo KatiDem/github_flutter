@@ -23,6 +23,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends BlocScreenState<SplashScreen, SplashBloc> {
+  // todo: move Strings to locales file
   @override
   Widget build(BuildContext context) {
     return const Scaffold(

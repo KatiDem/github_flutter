@@ -49,7 +49,7 @@ class _SearchScreenState extends BlocScreenState<SearchScreen, SearchBloc> {
   void dispose() {
     super.dispose();
   }
-
+// todo: move Strings to locales file
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.sizeOf(context);

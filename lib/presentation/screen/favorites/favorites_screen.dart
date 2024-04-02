@@ -46,6 +46,7 @@ class _FavoritesScreenState extends BlocScreenState<FavoritesScreen, FavoritesBl
     super.dispose();
   }
 
+// todo: move Strings to locales file
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<BlocData<FavoritesData?>>(
